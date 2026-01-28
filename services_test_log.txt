@@ -1,0 +1,47 @@
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90mC:/Users/BryanAbraham/OneDrive - Mobileware Technologies Pvt Ltd/Desktop/BrowsEZ/learning/CRONs[39m
+
+ [31m❯[39m src/services/services.test.ts [2m([22m[2m4 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 15[2mms[22m[39m
+[31m     [31m×[31m Relative scheduling (T+N) always results in a future date > reference date[39m[32m 12[2mms[22m[39m
+     [32m✓[39m detectCycles identifies cycles in simple circular graphs[32m 0[2mms[22m[39m
+     [32m✓[39m detectCycles passes for linear graphs A -> B -> C[32m 0[2mms[22m[39m
+     [32m✓[39m Completing a cron triggers dependents if all deps met[32m 1[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m src/services/services.test.ts[2m > [22mProperty 6: Scheduling Rule Application[2m > [22mRelative scheduling (T+N) always results in a future date > reference date
+[31m[1mError[22m: Property failed after 9 tests
+{ seed: 1894676009, path: "8:0:0:0:27:1:1:1:0:0:0:2:0:3:0:0:1:0:1:0", endOnFailure: true }
+Counterexample: [{"type":"relative","relativeDays":1,"relativeHours":0},new Date("+275760-09-12T00:00:00.001Z")]
+Shrunk 19 time(s)
+
+Hint: Enable verbose mode in order to have the list of all failing values encountered during the run[39m
+[90m [2m❯[22m buildError ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:[2m156:19[22m[39m
+[90m [2m❯[22m throwIfFailed ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:[2m165:11[22m[39m
+[90m [2m❯[22m reportRunDetails ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/runner/utils/RunDetailsFormatter.js:[2m178:16[22m[39m
+[90m [2m❯[22m Module.assert ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/runner/Runner.js:[2m61:9[22m[39m
+[36m [2m❯[22m src/services/services.test.ts:[2m19:12[22m[39m
+    [90m 17| [39m        }).filter(r => (r.relativeDays || 0) + (r.relativeHours || 0) …
+    [90m 18| [39m
+    [90m 19| [39m        fc[33m.[39m[34massert[39m(
+    [90m   | [39m           [31m^[39m
+    [90m 20| [39m            fc.property(relativeRuleArb, fc.date(), (rule, refDate) =>…
+    [90m 21| [39m                const result = DynamicScheduler.calculateNextDate(rule…
+
+[31m[1mCaused by: AssertionError[22m: expected NaN to be greater than 8639999913600001[39m
+[36m [2m❯[22m src/services/services.test.ts:[2m22:42[22m[39m
+[90m [2m❯[22m Property.predicate ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/property/Property.js:[2m14:54[22m[39m
+[90m [2m❯[22m Property.run ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/property/Property.generic.js:[2m43:33[22m[39m
+[90m [2m❯[22m runIt ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/runner/Runner.js:[2m14:30[22m[39m
+[90m [2m❯[22m check ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/runner/Runner.js:[2m54:11[22m[39m
+[90m [2m❯[22m Module.assert ../../../../../OneDrive%20-%20Mobileware%20Technologies%20Pvt%20Ltd/Desktop/BrowsEZ/learning/CRONs/node_modules/fast-check/lib/check/runner/Runner.js:[2m57:17[22m[39m
+[90m [2m❯[22m src/services/services.test.ts:[2m19:12[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m3 passed[39m[22m[90m (4)[39m
+[2m   Start at [22m 17:37:37
+[2m   Duration [22m 1.98s[2m (transform 168ms, setup 0ms, import 1.64s, tests 15ms, environment 0ms)[22m
+
