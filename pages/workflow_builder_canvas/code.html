@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Workflow Builder Canvas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .workflow-dot-grid {
+            background-image: radial-gradient(#d1d5db 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        .dark .workflow-dot-grid {
+            background-image: radial-gradient(#1f2937 1px, transparent 1px);
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d121b] dark:text-gray-100 min-h-screen">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 flex items-center justify-between border-b border-solid border-[#e7ebf3] dark:border-gray-800 bg-white dark:bg-gray-900 px-6 py-3">
+<div class="flex items-center gap-4">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+<span class="material-symbols-outlined text-[20px]">account_tree</span>
+</div>
+<div class="flex flex-col">
+<h2 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Workflow Builder</h2>
+<div class="flex items-center gap-1">
+<span class="text-[#4c669a] dark:text-gray-400 text-xs font-medium">Projects</span>
+<span class="material-symbols-outlined text-[12px] text-[#4c669a]">chevron_right</span>
+<span class="text-[#0d121b] dark:text-gray-200 text-xs font-medium">Website Launch Workflow</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-gray-100 dark:bg-gray-800 rounded-lg p-1 mr-4">
+<button class="p-1.5 hover:bg-white dark:hover:bg-gray-700 rounded-md transition-colors text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[20px]">undo</span>
+</button>
+<button class="p-1.5 hover:bg-white dark:hover:bg-gray-700 rounded-md transition-colors text-gray-500 dark:text-gray-400">
+<span class="material-symbols-outlined text-[20px]">redo</span>
+</button>
+</div>
+<button class="flex min-w-[120px] cursor-pointer items-center justify-center rounded-lg h-10 px-4 bg-primary text-white text-sm font-bold shadow-sm hover:bg-blue-700 transition-colors">
+<span>Save Workflow</span>
+</button>
+<button class="flex items-center justify-center rounded-lg h-10 w-10 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</div>
+</header>
+<div class="flex h-[calc(100vh-65px)]">
+<!-- Sidebar Navigation -->
+<aside class="w-64 border-r border-[#e7ebf3] dark:border-gray-800 bg-white dark:bg-gray-900 flex flex-col p-4 shrink-0">
+<div class="flex flex-col gap-1 mb-6">
+<h1 class="text-[#0d121b] dark:text-white text-base font-bold">Project Manager</h1>
+<p class="text-[#4c669a] dark:text-gray-400 text-xs font-normal">Workspace v1.2.0</p>
+</div>
+<nav class="flex flex-col gap-1">
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined text-[22px]">account_tree</span>
+<p class="text-sm font-semibold">Canvas</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[22px]">calendar_today</span>
+<p class="text-sm font-medium">Calendar View</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[22px]">checklist</span>
+<p class="text-sm font-medium">Task List</p>
+</div>
+<div class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors cursor-pointer">
+<span class="material-symbols-outlined text-[22px]">auto_awesome_motion</span>
+<p class="text-sm font-medium">Templates</p>
+</div>
+<div class="mt-8 px-3">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-4">Integrations</p>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-2">
+<div class="size-6 bg-blue-500 rounded flex items-center justify-center text-[10px] text-white font-bold">S</div>
+<span class="text-xs text-gray-600 dark:text-gray-400">Slack</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-6 bg-red-500 rounded flex items-center justify-center text-[10px] text-white font-bold">A</div>
+<span class="text-xs text-gray-600 dark:text-gray-400">Asana</span>
+</div>
+</div>
+</div>
+</nav>
+</aside>
+<!-- Main Canvas Area -->
+<main class="flex-1 overflow-auto bg-background-light dark:bg-background-dark workflow-dot-grid relative">
+<div class="max-w-4xl mx-auto py-12 px-8">
+<!-- Page Heading -->
+<div class="flex flex-col gap-2 mb-10 text-center">
+<h1 class="text-[#0d121b] dark:text-white tracking-tight text-3xl font-extrabold">Visual Workflow Canvas</h1>
+<p class="text-[#4c669a] dark:text-gray-400 text-base max-w-xl mx-auto">Design task dependencies and scheduling rules for your project pipeline. All dates will cascade automatically.</p>
+</div>
+<!-- Workflow Canvas -->
+<div class="flex flex-col items-center">
+<!-- Trigger Node -->
+<div class="flex flex-col items-center">
+<div class="bg-emerald-50 dark:bg-emerald-950/30 border-2 border-dashed border-emerald-400/50 rounded-xl px-6 py-3 mb-2">
+<div class="flex items-center gap-2 text-emerald-700 dark:text-emerald-400">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span class="text-xs font-bold uppercase tracking-wider">Trigger: New Project Received</span>
+</div>
+</div>
+<div class="h-8 w-0.5 bg-primary/30 relative">
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-2 h-2 rounded-full bg-primary shadow-[0_0_8px_rgba(19,91,236,0.6)]"></div>
+</div>
+</div>
+<!-- Task Cards Chain -->
+<div class="flex flex-col items-center gap-0 w-full max-w-lg mt-4">
+<!-- Card 1 -->
+<div class="w-full bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-[#e7ebf3] dark:border-gray-800 group hover:border-primary/50 transition-all p-5 relative">
+<div class="absolute -left-12 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity cursor-grab">
+<span class="material-symbols-outlined text-gray-400">drag_indicator</span>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center text-gray-500">
+<span class="material-symbols-outlined text-[20px]">description</span>
+</div>
+<input class="bg-transparent border-none p-0 text-base font-bold text-[#0d121b] dark:text-white focus:ring-0 w-64" placeholder="Task Title" type="text" value="Initial Intake &amp; Scrub"/>
+</div>
+<button class="text-gray-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Estimated Duration</label>
+<div class="flex items-center border border-[#e7ebf3] dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5">
+<input class="w-8 bg-transparent border-none p-0 text-sm font-medium focus:ring-0" type="text" value="1"/>
+<select class="bg-transparent border-none p-0 text-sm font-medium focus:ring-0 cursor-pointer">
+<option>hour(s)</option>
+<option selected="">day(s)</option>
+<option>week(s)</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Scheduling Rule</label>
+<div class="flex items-center border border-[#e7ebf3] dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5">
+<select class="w-full bg-transparent border-none p-0 text-sm font-medium focus:ring-0 cursor-pointer">
+<option selected="">Immediately after trigger</option>
+<option>Fixed start date</option>
+<option>Wait for input</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Connection Arrow -->
+<div class="h-10 w-0.5 bg-primary relative">
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 flex items-center justify-center bg-white dark:bg-gray-900 border-2 border-primary rounded-full z-10">
+<span class="material-symbols-outlined text-primary text-[12px] font-bold">expand_more</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="w-full bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-[#e7ebf3] dark:border-gray-800 group hover:border-primary/50 transition-all p-5 relative">
+<div class="absolute -left-12 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity cursor-grab">
+<span class="material-symbols-outlined text-gray-400">drag_indicator</span>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center text-gray-500">
+<span class="material-symbols-outlined text-[20px]">rate_review</span>
+</div>
+<input class="bg-transparent border-none p-0 text-base font-bold text-[#0d121b] dark:text-white focus:ring-0 w-64" placeholder="Task Title" type="text" value="Technical Review Phase"/>
+</div>
+<button class="text-gray-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Estimated Duration</label>
+<div class="flex items-center border border-[#e7ebf3] dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5">
+<input class="w-8 bg-transparent border-none p-0 text-sm font-medium focus:ring-0" type="text" value="2"/>
+<select class="bg-transparent border-none p-0 text-sm font-medium focus:ring-0 cursor-pointer">
+<option>hour(s)</option>
+<option selected="">day(s)</option>
+<option>week(s)</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Scheduling Rule</label>
+<div class="flex items-center border border-[#e7ebf3] dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5">
+<select class="w-full bg-transparent border-none p-0 text-sm font-medium focus:ring-0 cursor-pointer">
+<option selected="">Immediately after previous</option>
+<option>1 day after previous</option>
+<option>Wait for approval</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Connection Arrow -->
+<div class="h-10 w-0.5 bg-primary relative">
+<div class="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-4 h-4 flex items-center justify-center bg-white dark:bg-gray-900 border-2 border-primary rounded-full z-10">
+<span class="material-symbols-outlined text-primary text-[12px] font-bold">expand_more</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="w-full bg-white dark:bg-gray-900 rounded-xl shadow-sm border border-[#e7ebf3] dark:border-gray-800 group hover:border-primary/50 transition-all p-5 relative">
+<div class="absolute -left-12 top-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition-opacity cursor-grab">
+<span class="material-symbols-outlined text-gray-400">drag_indicator</span>
+</div>
+<div class="flex justify-between items-start mb-4">
+<div class="flex items-center gap-3">
+<div class="size-8 bg-gray-100 dark:bg-gray-800 rounded-lg flex items-center justify-center text-gray-500">
+<span class="material-symbols-outlined text-[20px]">verified</span>
+</div>
+<input class="bg-transparent border-none p-0 text-base font-bold text-[#0d121b] dark:text-white focus:ring-0 w-64" placeholder="Task Title" type="text" value="Final Stakeholder Approval"/>
+</div>
+<button class="text-gray-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Estimated Duration</label>
+<div class="flex items-center border border-[#e7ebf3] dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5">
+<input class="w-8 bg-transparent border-none p-0 text-sm font-medium focus:ring-0" type="text" value="1"/>
+<select class="bg-transparent border-none p-0 text-sm font-medium focus:ring-0 cursor-pointer">
+<option>hour(s)</option>
+<option selected="">day(s)</option>
+<option>week(s)</option>
+</select>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-[10px] font-bold text-[#4c669a] dark:text-gray-400 uppercase tracking-wider">Scheduling Rule</label>
+<div class="flex items-center border border-[#e7ebf3] dark:border-gray-700 rounded-lg bg-gray-50 dark:bg-gray-800/50 px-3 py-1.5">
+<select class="w-full bg-transparent border-none p-0 text-sm font-medium focus:ring-0 cursor-pointer">
+<option selected="">Immediately after previous</option>
+<option>At specific time</option>
+<option>Last step of project</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Add Step Button Container -->
+<div class="mt-12 flex flex-col items-center">
+<button class="flex items-center gap-2 bg-white dark:bg-gray-800 border-2 border-dashed border-primary/40 text-primary px-8 py-3 rounded-xl hover:bg-primary/5 hover:border-primary transition-all group">
+<span class="material-symbols-outlined group-hover:rotate-90 transition-transform">add_circle</span>
+<span class="font-bold text-sm">Add New Workflow Step</span>
+</button>
+<p class="text-xs text-[#4c669a] mt-4 font-medium italic">New steps will automatically inherit previous task dependencies.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Right Properties Panel (Hidden on smaller screens, shown for desktop) -->
+<aside class="fixed right-6 top-24 w-72 bg-white dark:bg-gray-900 border border-[#e7ebf3] dark:border-gray-800 rounded-xl shadow-xl p-4 hidden xl:block">
+<div class="flex items-center justify-between mb-4 border-b border-gray-100 dark:border-gray-800 pb-3">
+<h3 class="font-bold text-sm">Workflow Summary</h3>
+<span class="material-symbols-outlined text-primary">info</span>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs">
+<span class="text-gray-500">Total Duration:</span>
+<span class="font-bold">4 Days, 1 Hour</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-gray-500">Task Steps:</span>
+<span class="font-bold">3 Steps</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="text-gray-500">Cascading Errors:</span>
+<span class="text-emerald-500 font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> None
+                </span>
+</div>
+<div class="pt-2">
+<p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3">Timeline Preview</p>
+<div class="space-y-3">
+<div class="relative pl-4 border-l-2 border-primary/20">
+<div class="absolute -left-[5px] top-0 size-2 rounded-full bg-primary"></div>
+<p class="text-[11px] font-bold">Oct 12 - Oct 13</p>
+<p class="text-[10px] text-gray-500">Initial Intake</p>
+</div>
+<div class="relative pl-4 border-l-2 border-primary/20">
+<div class="absolute -left-[5px] top-0 size-2 rounded-full bg-primary"></div>
+<p class="text-[11px] font-bold">Oct 13 - Oct 15</p>
+<p class="text-[10px] text-gray-500">Technical Review</p>
+</div>
+<div class="relative pl-4">
+<div class="absolute -left-[5px] top-0 size-2 rounded-full bg-primary"></div>
+<p class="text-[11px] font-bold">Oct 15 - Oct 16</p>
+<p class="text-[10px] text-gray-500">Final Approval</p>
+</div>
+</div>
+</div>
+<button class="w-full py-2 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg text-xs font-bold transition-colors mt-2">
+                Export Flowchart
+            </button>
+</div>
+</aside>
+</body></html>

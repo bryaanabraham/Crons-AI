@@ -17,6 +17,10 @@ interface FlowStore {
     // Let's verify requirements: "Visual Flow Builder" implies granular updates.
     updateFlowNodes: (flowId: string, nodes: FlowNode[]) => void;
     updateFlowEdges: (flowId: string, edges: FlowEdge[]) => void;
+
+    // Template actions
+    saveAsTemplate: (flowId: string, templateName: string) => void;
+    instantiateTemplate: (templateId: string) => string; // Returns new flow ID
 }
 
 export const useFlowStore = create<FlowStore>()(
@@ -44,6 +48,41 @@ export const useFlowStore = create<FlowStore>()(
                 set((state) => ({
                     flows: state.flows.map((f) => (f.id === flowId ? { ...f, edges } : f)),
                 })),
+
+            saveAsTemplate: (flowId, templateName) =>
+                set((state) => {
+                    const original = state.flows.find((f) => f.id === flowId);
+                    if (!original) return state;
+
+                    const template: CronFlow = {
+                        ...original,
+                        id: crypto.randomUUID(),
+                        name: templateName,
+                        isTemplate: true,
+                        status: 'draft',
+                        createdAt: new Date().toISOString(),
+                    };
+                    return { flows: [...state.flows, template] };
+                }),
+
+            instantiateTemplate: (templateId) => {
+                const state = get();
+                const template = state.flows.find((f) => f.id === templateId);
+                if (!template) throw new Error('Template not found');
+
+                const newFlowId = crypto.randomUUID();
+                const newFlow: CronFlow = {
+                    ...template,
+                    id: newFlowId,
+                    name: `${template.name} (Copy)`,
+                    isTemplate: false,
+                    status: 'draft',
+                    createdAt: new Date().toISOString(),
+                };
+
+                set((state) => ({ flows: [...state.flows, newFlow] }));
+                return newFlowId;
+            },
         }),
         {
             name: 'flows-storage',

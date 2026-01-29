@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Workflow Templates Library</title>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-[#0d121b] dark:text-[#f8f9fc] min-h-screen">
+<!-- Top Navigation Bar Component -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e7ebf3] dark:border-gray-800 bg-white dark:bg-[#101622] px-6 lg:px-10 py-3 sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4 text-primary">
+<div class="size-6">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z" fill="currentColor"></path>
+</svg>
+</div>
+<h2 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">Workflow Manager</h2>
+</div>
+<label class="hidden md:flex flex-col min-w-40 !h-10 max-w-64">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#4c669a] flex border-none bg-[#e7ebf3] dark:bg-gray-800 items-center justify-center pl-4 rounded-l-lg border-r-0">
+<span class="material-symbols-outlined text-xl">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border-none bg-[#e7ebf3] dark:bg-gray-800 focus:border-none h-full placeholder:text-[#4c669a] px-4 rounded-l-none border-l-0 pl-2 text-base font-normal leading-normal" placeholder="Search templates..." value=""/>
+</div>
+</label>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden xl:flex items-center gap-6">
+<a class="text-[#0d121b] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Dashboard</a>
+<a class="text-primary text-sm font-bold leading-normal" href="#">Templates</a>
+<a class="text-[#0d121b] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Analytics</a>
+<a class="text-[#0d121b] dark:text-gray-300 text-sm font-medium leading-normal hover:text-primary transition-colors" href="#">Settings</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="flex min-w-[40px] md:min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-primary text-[#f8f9fc] text-sm font-bold leading-normal tracking-[0.015em] hover:bg-blue-700 transition-colors">
+<span class="truncate">Create New</span>
+</button>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border border-gray-200" data-alt="User profile avatar placeholder" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBwGu34PpOkf53oZakvz99iTb04R5IpvyRmTAS3BsaJzDo4DBjko9sSSpHnJ4ew0tT3emvoGDfzHr5yXWruD-lo2ViTON26kq3X9aDpUbKng99bbYLnzVsxR5t3Z52caQjhgUrzt_gpR2Anpkxabehs3IUF8Yx43bk9kK0dUjxByEl32oUwMoaT7ruhN52GbFxW_XHJZkIYqu73huM2H-kIXGGVRLgtdzmyUwKK4pPPky6Fm87mpq4Kz5jEIUki7YUWqdB3OxPP_cA");'></div>
+</div>
+</div>
+</header>
+<main class="max-w-[1280px] mx-auto px-6 py-10 lg:px-10">
+<!-- Page Heading Component -->
+<div class="flex flex-wrap items-center justify-between gap-4 mb-8">
+<div class="flex flex-col gap-1">
+<h1 class="text-[#0d121b] dark:text-white text-4xl font-black leading-tight tracking-[-0.033em]">Workflow Templates</h1>
+<p class="text-[#4c669a] dark:text-gray-400 text-base">Select a pre-built structure to streamline your team's efficiency.</p>
+</div>
+<button class="flex items-center gap-2 min-w-[84px] cursor-pointer justify-center overflow-hidden rounded-lg h-12 px-6 bg-primary text-white text-sm font-bold leading-normal tracking-[0.015em] hover:opacity-90 transition-all shadow-md">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+<span class="truncate">Create New Workflow Template</span>
+</button>
+</div>
+<!-- Search and Tabs Bar -->
+<div class="flex flex-col md:flex-row gap-6 mb-8 items-end md:items-center">
+<div class="flex-1 w-full">
+<!-- Tabs Component -->
+<div class="border-b border-[#cfd7e7] dark:border-gray-700">
+<div class="flex gap-8">
+<a class="flex flex-col items-center justify-center border-b-[3px] border-primary text-[#0d121b] dark:text-white pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">All Templates</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#4c669a] dark:text-gray-400 pb-[13px] pt-4 hover:text-[#0d121b] dark:hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Marketing</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#4c669a] dark:text-gray-400 pb-[13px] pt-4 hover:text-[#0d121b] dark:hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">HR</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-[3px] border-transparent text-[#4c669a] dark:text-gray-400 pb-[13px] pt-4 hover:text-[#0d121b] dark:hover:text-white transition-colors" href="#">
+<p class="text-sm font-bold leading-normal tracking-[0.015em]">Operations</p>
+</a>
+</div>
+</div>
+</div>
+<!-- Search Bar Component (Secondary Usage) -->
+<div class="w-full md:w-80">
+<label class="flex flex-col h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-[#4c669a] flex border-none bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 items-center justify-center pl-4 rounded-l-lg" data-icon="MagnifyingGlass">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-lg text-[#0d121b] dark:text-white focus:outline-0 focus:ring-0 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 h-full placeholder:text-[#4c669a] px-4 rounded-l-none border-l-0 pl-2 text-sm font-normal" placeholder="Filter library..." value=""/>
+</div>
+</label>
+</div>
+</div>
+<!-- Template Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Template Card 1 -->
+<div class="group bg-white dark:bg-gray-800 border border-[#e7ebf3] dark:border-gray-700 rounded-xl p-5 hover:shadow-xl hover:border-primary/50 transition-all flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">Content Creation</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded">8 Steps</span>
+<span class="text-[#4c669a] dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Marketing</span>
+</div>
+</div>
+<div class="p-2 bg-background-light dark:bg-gray-700 rounded-lg text-[#4c669a] dark:text-gray-300">
+<span class="material-symbols-outlined">description</span>
+</div>
+</div>
+<!-- Mini Flow Visualization -->
+<div class="flex items-center gap-2 py-4 px-2 bg-background-light dark:bg-gray-900 rounded-lg">
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">1</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Drafting</p>
+</div>
+<div class="w-4 h-px bg-[#cfd7e7] dark:bg-gray-700 mb-4"></div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">2</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Approval</p>
+</div>
+<div class="w-4 h-px bg-[#cfd7e7] dark:bg-gray-700 mb-4"></div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-[#cfd7e7] dark:bg-gray-600 flex items-center justify-center text-[10px] text-[#4c669a] dark:text-gray-400 font-bold">3</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Publish</p>
+</div>
+<div class="text-[#cfd7e7] dark:text-gray-600 mb-4">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-auto pt-2">
+<button class="flex-1 h-10 rounded-lg bg-[#e7ebf3] dark:bg-gray-700 text-[#0d121b] dark:text-white text-sm font-bold hover:bg-[#cfd7e7] dark:hover:bg-gray-600 transition-colors">Edit</button>
+<button class="flex-1 h-10 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">Start Workflow</button>
+</div>
+</div>
+<!-- Template Card 2 -->
+<div class="group bg-white dark:bg-gray-800 border border-[#e7ebf3] dark:border-gray-700 rounded-xl p-5 hover:shadow-xl hover:border-primary/50 transition-all flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">Client Onboarding</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded">5 Steps</span>
+<span class="text-[#4c669a] dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Operations</span>
+</div>
+</div>
+<div class="p-2 bg-background-light dark:bg-gray-700 rounded-lg text-[#4c669a] dark:text-gray-300">
+<span class="material-symbols-outlined">person_add</span>
+</div>
+</div>
+<div class="flex items-center gap-2 py-4 px-2 bg-background-light dark:bg-gray-900 rounded-lg">
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">1</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Intro</p>
+</div>
+<div class="w-4 h-px bg-[#cfd7e7] dark:bg-gray-700 mb-4"></div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">2</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Setup</p>
+</div>
+<div class="w-4 h-px bg-[#cfd7e7] dark:bg-gray-700 mb-4"></div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">3</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Launch</p>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-auto pt-2">
+<button class="flex-1 h-10 rounded-lg bg-[#e7ebf3] dark:bg-gray-700 text-[#0d121b] dark:text-white text-sm font-bold hover:bg-[#cfd7e7] dark:hover:bg-gray-600 transition-colors">Edit</button>
+<button class="flex-1 h-10 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">Start Workflow</button>
+</div>
+</div>
+<!-- Template Card 3 -->
+<div class="group bg-white dark:bg-gray-800 border border-[#e7ebf3] dark:border-gray-700 rounded-xl p-5 hover:shadow-xl hover:border-primary/50 transition-all flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">Monthly Financial Audit</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded">12 Steps</span>
+<span class="text-[#4c669a] dark:text-gray-400 text-xs font-medium uppercase tracking-wider">Finance</span>
+</div>
+</div>
+<div class="p-2 bg-background-light dark:bg-gray-700 rounded-lg text-[#4c669a] dark:text-gray-300">
+<span class="material-symbols-outlined">payments</span>
+</div>
+</div>
+<div class="flex items-center gap-2 py-4 px-2 bg-background-light dark:bg-gray-900 rounded-lg">
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">1</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Data Collection</p>
+</div>
+<div class="w-4 h-px bg-[#cfd7e7] dark:bg-gray-700 mb-4"></div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-[#cfd7e7] dark:bg-gray-600 flex items-center justify-center text-[10px] text-[#4c669a] dark:text-gray-400 font-bold">2</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Review</p>
+</div>
+<div class="w-4 h-px bg-[#cfd7e7] dark:bg-gray-700 mb-4"></div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-[#cfd7e7] dark:bg-gray-600 flex items-center justify-center text-[10px] text-[#4c669a] dark:text-gray-400 font-bold">3</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Reporting</p>
+</div>
+<div class="text-[#cfd7e7] dark:text-gray-600 mb-4">
+<span class="material-symbols-outlined text-sm">more_horiz</span>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-auto pt-2">
+<button class="flex-1 h-10 rounded-lg bg-[#e7ebf3] dark:bg-gray-700 text-[#0d121b] dark:text-white text-sm font-bold hover:bg-[#cfd7e7] dark:hover:bg-gray-600 transition-colors">Edit</button>
+<button class="flex-1 h-10 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">Start Workflow</button>
+</div>
+</div>
+<!-- Template Card 4 -->
+<div class="group bg-white dark:bg-gray-800 border border-[#e7ebf3] dark:border-gray-700 rounded-xl p-5 hover:shadow-xl hover:border-primary/50 transition-all flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex flex-col">
+<h3 class="text-[#0d121b] dark:text-white text-lg font-bold leading-tight">Employee Offboarding</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="px-2 py-0.5 bg-primary/10 text-primary text-xs font-bold rounded">6 Steps</span>
+<span class="text-[#4c669a] dark:text-gray-400 text-xs font-medium uppercase tracking-wider">HR</span>
+</div>
+</div>
+<div class="p-2 bg-background-light dark:bg-gray-700 rounded-lg text-[#4c669a] dark:text-gray-300">
+<span class="material-symbols-outlined">person_remove</span>
+</div>
+</div>
+<div class="flex items-center gap-2 py-4 px-2 bg-background-light dark:bg-gray-900 rounded-lg">
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">1</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Notice</p>
+</div>
+<div class="w-4 h-px bg-[#cfd7e7] dark:bg-gray-700 mb-4"></div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-primary flex items-center justify-center text-[10px] text-white font-bold">2</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Exit Interview</p>
+</div>
+<div class="w-4 h-px bg-[#cfd7e7] dark:bg-gray-700 mb-4"></div>
+<div class="flex-1 flex flex-col items-center gap-1">
+<div class="size-6 rounded-full bg-[#cfd7e7] dark:bg-gray-600 flex items-center justify-center text-[10px] text-[#4c669a] dark:text-gray-400 font-bold">3</div>
+<p class="text-[10px] font-medium text-[#4c669a] dark:text-gray-400 truncate w-full text-center">Closure</p>
+</div>
+</div>
+<div class="flex items-center gap-3 mt-auto pt-2">
+<button class="flex-1 h-10 rounded-lg bg-[#e7ebf3] dark:bg-gray-700 text-[#0d121b] dark:text-white text-sm font-bold hover:bg-[#cfd7e7] dark:hover:bg-gray-600 transition-colors">Edit</button>
+<button class="flex-1 h-10 rounded-lg bg-primary text-white text-sm font-bold hover:opacity-90 transition-opacity">Start Workflow</button>
+</div>
+</div>
+<!-- Empty State / New Template Placeholder -->
+<div class="group bg-white/50 dark:bg-gray-800/50 border-2 border-dashed border-[#cfd7e7] dark:border-gray-700 rounded-xl p-5 flex flex-col items-center justify-center gap-4 min-h-[300px] hover:border-primary/50 transition-all cursor-pointer">
+<div class="size-16 rounded-full bg-primary/5 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-4xl">add</span>
+</div>
+<div class="text-center">
+<p class="text-[#0d121b] dark:text-white text-lg font-bold">Create custom template</p>
+<p class="text-[#4c669a] dark:text-gray-400 text-sm">Design a workflow from scratch</p>
+</div>
+</div>
+</div>
+<!-- Footer Pagination/Load More -->
+<div class="flex justify-center mt-12 pb-12">
+<button class="flex items-center gap-2 px-8 h-12 rounded-lg border border-[#cfd7e7] dark:border-gray-700 text-[#0d121b] dark:text-white text-sm font-bold hover:bg-white dark:hover:bg-gray-800 transition-colors">
+                Load more templates
+                <span class="material-symbols-outlined text-lg">expand_more</span>
+</button>
+</div>
+</main>
+</body></html>

@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 
-export type ViewType = 'calendar' | 'flow-builder' | 'templates' | 'settings';
+export type ViewType = 'dashboard' | 'calendar' | 'flow-builder' | 'templates' | 'settings';
 
 interface UIStore {
     sidebarOpen: boolean;

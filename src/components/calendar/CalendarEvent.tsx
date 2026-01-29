@@ -10,32 +10,25 @@ export function CalendarEvent({ event }: { event: EventContentArg }) {
 
     // Status Colors
     const statusColors = {
-        pending: 'bg-slate-100 text-slate-700 border-slate-300',
-        active: 'bg-blue-100 text-blue-700 border-blue-300',
-        completed: 'bg-green-100 text-green-700 border-green-300',
-        overdue: 'bg-red-100 text-red-700 border-red-300'
+        pending: 'bg-slate-50 border-slate-200 text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400',
+        active: 'bg-blue-50 border-blue-200 text-blue-700 dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400',
+        completed: 'bg-emerald-50 border-emerald-200 text-emerald-700 dark:bg-emerald-900/20 dark:border-emerald-800 dark:text-emerald-400',
+        overdue: 'bg-red-50 border-red-200 text-red-700 dark:bg-red-900/20 dark:border-red-800 dark:text-red-400'
     };
 
     const statusColor = statusColors[cron.status] || statusColors.pending;
 
     return (
         <div className={cn(
-            "flex items-center gap-1.5 px-2 py-1 w-full h-full rounded-md border text-xs font-medium overflow-hidden transition-all hover:brightness-95",
-            statusColor,
-            // FullCalendar sometimes sets strict heights, we want to fill it but keep it nice
-            "shadow-sm"
+            "flex items-center gap-1.5 px-2 py-1 w-full rounded border text-[11px] font-bold overflow-hidden transition-all hover:brightness-95 hover:scale-[1.02] shadow-sm",
+            statusColor
         )}>
-            {cron.status === 'completed' && <CheckCircle className="w-3 h-3 flex-shrink-0" />}
-            {cron.status === 'active' && <Clock className="w-3 h-3 flex-shrink-0 animate-pulse" />}
-            {cron.status === 'overdue' && <AlertTriangle className="w-3 h-3 flex-shrink-0" />}
+            <span className="material-symbols-outlined text-[14px]">
+                {cron.status === 'completed' ? 'check_circle' : cron.status === 'active' ? 'play_circle' : 'schedule'}
+            </span>
 
             <div className="flex flex-col min-w-0 flex-1">
                 <span className="truncate">{cron.title}</span>
-                {isDeadline && cron.deadline && (
-                    <span className="text-[10px] opacity-75 truncate">
-                        Due: {new Date(cron.deadline).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
-                    </span>
-                )}
             </div>
         </div>
     );

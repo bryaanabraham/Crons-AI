@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Start Workflow Configuration</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-[#0d121b] dark:text-white transition-colors duration-200">
+<!-- Mock Background Page (Template Management) -->
+<div class="fixed inset-0 overflow-hidden filter blur-sm pointer-events-none opacity-50">
+<div class="layout-container flex h-full grow flex-col">
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-[#e7ebf3] dark:border-white/10 px-10 py-3">
+<div class="flex items-center gap-8">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary">account_tree</span>
+<h2 class="text-lg font-bold">Workflow Manager</h2>
+</div>
+</div>
+</header>
+<div class="px-10 py-8">
+<h1 class="text-4xl font-black mb-4">Workflow Templates</h1>
+<div class="grid grid-cols-3 gap-6">
+<div class="h-48 bg-white dark:bg-background-dark/50 rounded-xl border border-dashed border-gray-300"></div>
+<div class="h-48 bg-white dark:bg-background-dark/50 rounded-xl border border-dashed border-gray-300"></div>
+<div class="h-48 bg-white dark:bg-background-dark/50 rounded-xl border border-dashed border-gray-300"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Overlay -->
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-[2px] p-4">
+<div class="bg-white dark:bg-[#1a2133] w-full max-w-[800px] max-h-[90vh] rounded-xl shadow-2xl flex flex-col overflow-hidden">
+<!-- Modal Header -->
+<div class="flex items-center justify-between border-b border-[#e7ebf3] dark:border-white/10 px-8 py-6">
+<div class="flex flex-col gap-1">
+<h2 class="text-2xl font-bold leading-tight tracking-tight">Start Workflow</h2>
+<p class="text-[#4c669a] dark:text-gray-400 text-sm">Marketing Campaign Alpha — <span class="font-medium text-primary">Template ID: #9902</span></p>
+</div>
+<button class="text-[#4c669a] hover:text-[#0d121b] dark:hover:text-white p-2">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="flex flex-1 overflow-hidden">
+<!-- Left Side: Config & Date Picker -->
+<div class="w-[380px] border-r border-[#e7ebf3] dark:border-white/10 p-8 overflow-y-auto">
+<div class="flex flex-col gap-6">
+<!-- Workflow Name (Read Only) -->
+<div class="flex flex-col gap-2">
+<p class="text-[#0d121b] dark:text-white text-sm font-semibold uppercase tracking-wider">Active Instance Name</p>
+<div class="flex items-center gap-3 px-4 py-3 bg-gray-50 dark:bg-white/5 rounded-lg border border-[#cfd7e7] dark:border-white/10">
+<span class="material-symbols-outlined text-[#4c669a]">edit_note</span>
+<span class="text-base">Q4 Launch - Marketing Alpha</span>
+</div>
+</div>
+<!-- Date Picker Section -->
+<div class="flex flex-col gap-2">
+<p class="text-[#0d121b] dark:text-white text-sm font-semibold uppercase tracking-wider">Initial Start Date (T-Zero)</p>
+<p class="text-xs text-[#4c669a] dark:text-gray-400 mb-2">Select the date for the first task. All subsequent steps will shift automatically.</p>
+<!-- Calendar Picker Component -->
+<div class="bg-white dark:bg-white/5 rounded-lg border border-[#cfd7e7] dark:border-white/10 p-2">
+<div class="flex items-center p-1 justify-between mb-2">
+<button class="p-1 hover:bg-gray-100 dark:hover:bg-white/10 rounded">
+<span class="material-symbols-outlined text-sm">arrow_back_ios</span>
+</button>
+<p class="text-sm font-bold">October 2023</p>
+<button class="p-1 hover:bg-gray-100 dark:hover:bg-white/10 rounded">
+<span class="material-symbols-outlined text-sm">arrow_forward_ios</span>
+</button>
+</div>
+<div class="grid grid-cols-7 text-center">
+<p class="text-[10px] font-bold py-1 opacity-50">S</p>
+<p class="text-[10px] font-bold py-1 opacity-50">M</p>
+<p class="text-[10px] font-bold py-1 opacity-50">T</p>
+<p class="text-[10px] font-bold py-1 opacity-50">W</p>
+<p class="text-[10px] font-bold py-1 opacity-50">T</p>
+<p class="text-[10px] font-bold py-1 opacity-50">F</p>
+<p class="text-[10px] font-bold py-1 opacity-50">S</p>
+<!-- Simplified Calendar Days -->
+<div class="aspect-square flex items-center justify-center text-xs opacity-20">28</div>
+<div class="aspect-square flex items-center justify-center text-xs opacity-20">29</div>
+<div class="aspect-square flex items-center justify-center text-xs opacity-20">30</div>
+<div class="aspect-square flex items-center justify-center text-xs">1</div>
+<div class="aspect-square flex items-center justify-center text-xs">2</div>
+<div class="aspect-square flex items-center justify-center text-xs">3</div>
+<div class="aspect-square flex items-center justify-center text-xs">4</div>
+<button class="aspect-square flex items-center justify-center text-xs bg-primary text-white rounded-full font-bold">5</button>
+<div class="aspect-square flex items-center justify-center text-xs hover:bg-gray-100 dark:hover:bg-white/10 rounded-full cursor-pointer">6</div>
+<div class="aspect-square flex items-center justify-center text-xs hover:bg-gray-100 dark:hover:bg-white/10 rounded-full cursor-pointer">7</div>
+<div class="aspect-square flex items-center justify-center text-xs hover:bg-gray-100 dark:hover:bg-white/10 rounded-full cursor-pointer">8</div>
+<div class="aspect-square flex items-center justify-center text-xs hover:bg-gray-100 dark:hover:bg-white/10 rounded-full cursor-pointer">9</div>
+<div class="aspect-square flex items-center justify-center text-xs hover:bg-gray-100 dark:hover:bg-white/10 rounded-full cursor-pointer">10</div>
+<div class="aspect-square flex items-center justify-center text-xs hover:bg-gray-100 dark:hover:bg-white/10 rounded-full cursor-pointer">11</div>
+</div>
+</div>
+</div>
+<!-- Time Selection (Generated Component) -->
+<div class="flex flex-col gap-2">
+<p class="text-[#0d121b] dark:text-white text-sm font-semibold uppercase tracking-wider">Target Time</p>
+<div class="flex gap-2">
+<select class="flex-1 bg-white dark:bg-white/5 border border-[#cfd7e7] dark:border-white/10 rounded-lg p-2 text-sm focus:ring-primary focus:border-primary">
+<option>09:00 AM</option>
+<option>10:00 AM</option>
+<option>11:00 AM</option>
+<option>12:00 PM</option>
+</select>
+<select class="w-32 bg-white dark:bg-white/5 border border-[#cfd7e7] dark:border-white/10 rounded-lg p-2 text-sm focus:ring-primary focus:border-primary">
+<option>EST (GMT-5)</option>
+<option>PST (GMT-8)</option>
+<option>UTC</option>
+</select>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Side: Preview List -->
+<div class="flex-1 bg-gray-50 dark:bg-black/20 p-8 flex flex-col gap-4 overflow-y-auto">
+<div class="flex items-center justify-between mb-2">
+<h3 class="text-sm font-bold uppercase tracking-wider">Calculated Schedule Preview</h3>
+<span class="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 rounded uppercase">Dynamic logic</span>
+</div>
+<!-- Steps Timeline -->
+<div class="flex flex-col relative">
+<!-- Vertical Connector Line -->
+<div class="absolute left-4 top-4 bottom-4 w-0.5 bg-primary/20"></div>
+<!-- Step 1 -->
+<div class="relative pl-10 pb-8 group">
+<div class="absolute left-2.5 top-1 size-3.5 rounded-full border-4 border-primary bg-white dark:bg-[#1a2133] z-10 group-hover:scale-125 transition-transform"></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold">Initial Stakeholder Briefing</span>
+<span class="text-xs font-mono bg-white dark:bg-white/5 px-2 py-1 rounded border dark:border-white/10">Oct 05, 09:00 AM</span>
+</div>
+<p class="text-xs text-[#4c669a] dark:text-gray-400">Trigger step • Start of workflow</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="relative pl-10 pb-8 group">
+<div class="absolute left-2.5 top-1 size-3.5 rounded-full border-4 border-primary/40 bg-white dark:bg-[#1a2133] z-10 group-hover:border-primary/60 transition-colors"></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold">Creative Concept Development</span>
+<span class="text-xs font-mono bg-white dark:bg-white/5 px-2 py-1 rounded border dark:border-white/10">Oct 08, 09:00 AM</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">link</span>
+<p class="text-xs text-[#4c669a] dark:text-gray-400">Depends on Step 1 <span class="text-primary font-medium">(+3 Days)</span></p>
+</div>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="relative pl-10 pb-8 group">
+<div class="absolute left-2.5 top-1 size-3.5 rounded-full border-4 border-primary/40 bg-white dark:bg-[#1a2133] z-10"></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold">Resource Allocation &amp; Budgeting</span>
+<span class="text-xs font-mono bg-white dark:bg-white/5 px-2 py-1 rounded border dark:border-white/10">Oct 09, 12:00 PM</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">link</span>
+<p class="text-xs text-[#4c669a] dark:text-gray-400">Depends on Step 2 <span class="text-primary font-medium">(+1 Day, +3hrs)</span></p>
+</div>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="relative pl-10 pb-2 group">
+<div class="absolute left-2.5 top-1 size-3.5 rounded-full border-4 border-primary/40 bg-white dark:bg-[#1a2133] z-10"></div>
+<div class="flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="text-sm font-bold">Asset Production Phase 1</span>
+<span class="text-xs font-mono bg-white dark:bg-white/5 px-2 py-1 rounded border dark:border-white/10">Oct 16, 09:00 AM</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[14px] text-primary">link</span>
+<p class="text-xs text-[#4c669a] dark:text-gray-400">Depends on Step 3 <span class="text-primary font-medium">(+7 Days)</span></p>
+</div>
+</div>
+</div>
+</div>
+<!-- Summary Info -->
+<div class="mt-auto pt-6 border-t border-[#e7ebf3] dark:border-white/10">
+<div class="flex justify-between items-center text-sm p-4 bg-primary/5 dark:bg-primary/10 rounded-lg">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<span class="font-medium">Total Workflow Duration</span>
+</div>
+<span class="font-bold text-primary">11 Days, 3 Hours</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="border-t border-[#e7ebf3] dark:border-white/10 px-8 py-6 flex items-center justify-end gap-4 bg-white dark:bg-[#1a2133]">
+<button class="px-6 py-3 rounded-lg text-sm font-bold text-[#4c669a] dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors">
+                    Cancel
+                </button>
+<button class="px-8 py-3 rounded-lg bg-primary text-white text-sm font-bold shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">play_arrow</span>
+                    Start Workflow
+                </button>
+</div>
+</div>
+</div>
+</body></html>

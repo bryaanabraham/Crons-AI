@@ -29,7 +29,7 @@ export function CalendarView() {
     };
 
     return (
-        <div className="h-full w-full bg-card rounded-xl border shadow-sm p-4 overflow-hidden flex flex-col">
+        <div className="h-full w-full bg-card rounded-xl border border-border shadow-sm p-4 overflow-hidden flex flex-col">
             <div className="flex-1 calendar-wrapper">
                 <FullCalendar
                     plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}

@@ -27,13 +27,13 @@ const NavItem = ({
 }) => (
     <button
         onClick={onClick}
-        className={`flex items-center w-full gap-3 px-4 py-3 text-sm font-medium transition-colors rounded-lg group
+        className={`flex items-center w-full gap-3 px-3 py-2.5 text-sm font-semibold transition-colors rounded-lg group
       ${active
-                ? 'bg-primary/10 text-primary hover:bg-primary/15'
-                : 'text-muted-foreground hover:bg-accent hover:text-foreground'
+                ? 'bg-primary/10 text-primary font-bold shadow-sm'
+                : 'text-muted-foreground hover:bg-muted hover:text-foreground'
             }`}
     >
-        <Icon className="w-5 h-5" />
+        <span className="material-symbols-outlined text-[20px]">{label === 'Dashboard' ? 'schedule' : label === 'Cron Flows' ? 'schema' : label === 'Templates' ? 'dashboard_customize' : 'settings'}</span>
         <span>{label}</span>
     </button>
 );
@@ -60,15 +60,17 @@ export function Sidebar() {
 
             {/* Sidebar Container */}
             <aside
-                className={`fixed top-0 left-0 z-50 h-full w-64 bg-card border-r transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:block
+                className={`fixed top-0 left-0 z-50 h-full w-64 border-r border-border bg-card transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:block
           ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
             >
                 <div className="flex flex-col h-full">
                     {/* Header */}
                     <div className="flex items-center justify-between h-16 px-6 border-b">
-                        <div className="flex items-center gap-2 font-bold text-xl text-primary">
-                            <Workflow className="w-6 h-6" />
+                        <div className="flex items-center gap-2 font-bold text-xl text-[#0d121b] dark:text-white">
+                            <div className="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                                <Workflow className="w-5 h-5" />
+                            </div>
                             <span>Crons.ai</span>
                         </div>
                         <button
@@ -81,10 +83,20 @@ export function Sidebar() {
 
                     {/* Nav Items */}
                     <div className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
-                        <div className="px-3 mb-2 text-xs font-semibold uppercase text-muted-foreground/50 tracking-wider">
-                            Main Menu
+                        <div className="px-3 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                            Overview
                         </div>
-                        {navItems.map((item) => (
+                        <NavItem
+                            icon={() => <></>}
+                            label="Dashboard"
+                            active={currentView === 'calendar'}
+                            onClick={() => { setView('calendar'); if (window.innerWidth < 1024) setSidebarOpen(false); }}
+                        />
+
+                        <div className="pt-6 px-3 mb-2 text-[10px] font-bold text-slate-400 uppercase tracking-widest">
+                            Management
+                        </div>
+                        {navItems.filter(i => i.view !== 'calendar').map((item) => (
                             <NavItem
                                 key={item.view}
                                 icon={item.icon}
@@ -92,17 +104,20 @@ export function Sidebar() {
                                 active={currentView === item.view}
                                 onClick={() => {
                                     setView(item.view);
-                                    // On mobile, close sidebar after selection
                                     if (window.innerWidth < 1024) setSidebarOpen(false);
                                 }}
                             />
                         ))}
                     </div>
 
-                    {/* Footer User/Settings info could go here */}
-                    <div className="p-4 border-t">
-                        <div className="text-xs text-center text-muted-foreground">
-                            v0.1.0 Alpha
+                    {/* Footer User/Settings */}
+                    <div className="p-4 border-t border-border">
+                        <div className="bg-muted/50 p-3 rounded-xl flex items-center gap-3">
+                            <div className="h-10 w-10 rounded-full bg-cover bg-center bg-gray-300" />
+                            <div className="flex-1 overflow-hidden">
+                                <p className="text-sm font-bold truncate text-slate-900 dark:text-white">Alex Rivera</p>
+                                <p className="text-xs text-slate-500 truncate">Pro Plan</p>
+                            </div>
                         </div>
                     </div>
                 </div>

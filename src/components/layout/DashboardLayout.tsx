@@ -2,14 +2,13 @@ import { ReactNode } from 'react';
 import { Sidebar } from './Sidebar';
 import { DetailsPanel } from './DetailsPanel';
 import { useUIStore } from '@/store/uiStore';
-import { Menu } from 'lucide-react';
+import { CronDetails } from '../cron/CronDetails';
+import { useCronStore } from '@/store/cronStore';
+import { TopNav } from './TopNav';
 
 interface DashboardLayoutProps {
     children: ReactNode;
 }
-
-import { CronDetails } from '../cron/CronDetails';
-import { useCronStore } from '@/store/cronStore';
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
     const { setSidebarOpen, selectedCronId } = useUIStore();
@@ -18,23 +17,15 @@ export function DashboardLayout({ children }: DashboardLayoutProps) {
     const selectedCron = selectedCronId ? crons.find(c => c.id === selectedCronId) : null;
 
     return (
-        <div className="flex h-screen w-full bg-background overflow-hidden text-foreground">
+        <div className="flex h-screen w-full bg-background text-foreground font-display overflow-hidden">
             {/* Sidebar */}
             <Sidebar />
 
             {/* Main Content Area */}
             <main className="flex-1 flex flex-col relative overflow-hidden transition-all duration-300">
+                <TopNav />
 
-                {/* Mobile Header */}
-                <header className="lg:hidden flex items-center h-16 px-4 border-b bg-card">
-                    <button
-                        onClick={() => setSidebarOpen(true)}
-                        className="p-2 -ml-2 hover:bg-accent rounded-md"
-                    >
-                        <Menu className="w-6 h-6" />
-                    </button>
-                    <span className="ml-4 font-semibold">Crons.ai</span>
-                </header>
+                {/* Content Scroll Area */}
 
                 {/* Content Scroll Area */}
                 <div className="flex-1 overflow-y-auto p-4 lg:p-8">
